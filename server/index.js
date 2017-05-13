@@ -1,17 +1,13 @@
-var express = require('express');
-var app = express();
+var port = 3001;
+var io = require('socket.io')(port);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.post('/api', function (req, res) {
-  var link = req.param('url');
-  res.send({
-    link
+io.on('connection', (socket) => {
+  // when the client emits 'handshake', this listens and executes
+  socket.on('handshake', function (data) {
+    // we tell the client to execute 'handshake'
+    socket.broadcast.emit('handshake', {
+      message: data
+    });
   });
-});
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
 });
