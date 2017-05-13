@@ -10,4 +10,4 @@ export default class FavoriteSites extends Component {
             <h2>Some data.</h2>
         )
     }
-}
+} 
