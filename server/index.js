@@ -1,5 +1,6 @@
 var port = 3001;
 var io = require('socket.io')(port);
+const phantomjs = require('./phantom');
 
 io.on('connection', (socket) => {
   // when the client emits 'handshake', this listens and executes
