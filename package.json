@@ -10,7 +10,8 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-materialize": "^0.18.4",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "socket.io-client": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

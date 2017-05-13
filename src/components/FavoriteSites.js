@@ -38,4 +38,4 @@ export default class FavoriteSites extends Component {
             </Table>
         )
     }
-}
+} 
