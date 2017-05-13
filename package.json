@@ -6,10 +6,17 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+<<<<<<< HEAD
     "material-ui": "^0.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1"
+=======
+    "express": "^4.15.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "socket.io": "^2.0.1"
+>>>>>>> 768ac1689f53ac82d995322d76df1a58d2c3c695
   },
   "scripts": {
     "start": "react-scripts start",
