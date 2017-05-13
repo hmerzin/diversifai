@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
       <Search/>
+      <h2>Divide</h2>
       <FavoriteSites/>
       </div>
     );
