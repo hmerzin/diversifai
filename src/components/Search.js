@@ -3,12 +3,23 @@ import TextField from 'material-ui/TextField';
 
 export default class Search extends Component {
     constructor(props) {
-        super();
+      super();
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit (event) {
+      event.preventDefault();
+      if (this.props.onSubmit) {
+        this.props.onSubmit();
+      }
     }
 
     render() {
         return (
-            <TextField floatingLabelText="Floating Label Text" />
+            <form onSubmit={this.handleSubmit}>
+              <TextField floatingLabelText="Floating Label Text" />
+              <input type="submit" />
+            </form>
         )
     }
 }

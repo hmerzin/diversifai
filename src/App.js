@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
@@ -11,10 +10,16 @@ import FavoriteSites from './components/FavoriteSites';
 import Search from './components/Search';
 import io from 'socket.io-client';
 
+let socket;
+
+function startCalculation(url) {
+  console.log(socket);
+}
+
 class App extends Component {
 
   componentDidMount() {
-    const socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
+    socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
     socket.emit('connection');
     socket.emit('handshake', {
       hi: 'dude',
@@ -39,7 +44,7 @@ class Entry extends Component {
   render() {
     return (
       <div>
-        <Search/>
+        <Search onSubmit={startCalculation}/>
         <FavoriteSites/>
       </div>
     )
