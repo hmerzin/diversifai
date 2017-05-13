@@ -12,24 +12,7 @@ import io from 'socket.io-client';
 
 let socket;
 
-function startCalculation(url) {
-  console.log(socket);
-}
-
 class App extends Component {
-
-  componentDidMount() {
-    socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-    socket.emit('connection');
-    socket.emit('handshake', {
-      hi: 'dude',
-      whats: 'up?'
-    });
-
-    socket.on('handshake', (data) => {
-      console.log('server handshake: ', data);
-    });
-  }
 
   render() {
     return (
@@ -41,10 +24,32 @@ class App extends Component {
 }
 
 class Entry extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: false
+    }
+
+    this.startCalculation = this.startCalculation.bind(this);
+  }
+
+  componentDidMount() {
+    socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
+    socket.emit('connection');
+  }
+
+  startCalculation(url) {
+    socket.emit('calculate', url);
+    socket.on('display_results', (data) => {
+      console.log(data);
+    });
+  }
+
   render() {
     return (
       <div>
-        <Search onSubmit={startCalculation}/>
+        <Search onSubmit={this.startCalculation}/>
         <FavoriteSites/>
       </div>
     )
