@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export default class Search extends Component {
+export default class FavoriteSites extends Component {
     constructor(props) {
-      super(props);
+        super();
     }
 
     render() {
         return (
-            <h2>Search</h2>
+            <h2>Some data.</h2>
         )
     }
-}
+} 
