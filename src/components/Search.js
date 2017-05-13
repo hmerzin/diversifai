@@ -23,7 +23,7 @@ export default class Search extends Component {
     render() {
         return (
             <form style={this.style} onSubmit={this.handleSubmit}>
-                <TextField floatingLabelText="Floating Label Text" />
+            <TextField floatingLabelText="Floating Label Text" />
               <FlatButton style={{marginTop: 30, marginLeft: 15}} label="Submit" type="submit" primary={true} />
             </form>
         )
