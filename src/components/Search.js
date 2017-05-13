@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import TextField from 'material-ui/TextField';
 
 export default class Search extends Component {
@@ -9,7 +8,7 @@ export default class Search extends Component {
 
     render() {
         return (
-            <TextField floatingLabelText="Floating Label Text" />            
+            <TextField floatingLabelText="Floating Label Text" />
         )
     }
 }
