@@ -6,14 +6,6 @@ import Search from './components/Search';
 import io from 'socket.io-client';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Search/>
-        <FavoriteSites/>
-      </div>
-    );
-  }
 
   componentDidMount() {
     const socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
@@ -26,6 +18,15 @@ class App extends Component {
     socket.on('handshake', (data) => {
       console.log('server handshake: ', data);
     });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Search/>
+        <FavoriteSites/>
+      </div>
+    );
   }
 }
 
