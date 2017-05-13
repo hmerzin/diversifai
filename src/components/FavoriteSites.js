@@ -5,7 +5,6 @@ import {
   TableHeader,
   TableHeaderColumn,
   TableRow,
-  TableRowColumn,
 } from 'material-ui/Table';
 
 export default class FavoriteSites extends Component {
@@ -38,4 +37,4 @@ export default class FavoriteSites extends Component {
             </Table>
         )
     }
-} 
+}
