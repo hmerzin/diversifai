@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class FavoriteSites extends Component {
     constructor(props) {
         super();
@@ -7,7 +6,7 @@ export default class FavoriteSites extends Component {
 
     render() {
         return (
-            <h2>Some data.</h2>
+            <h2>Fun Table</h2>
         )
     }
 }
