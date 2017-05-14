@@ -51,6 +51,7 @@ class Entry extends Component {
   }
 
   handleResponse(data) {
+    console.log('data:' + data);
     this.setState({
       data: data
     });
