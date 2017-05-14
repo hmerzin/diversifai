@@ -90,11 +90,7 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {};
-
-    this.state = {data: {deter: false}};
-
+    this.state = {results: false};
     this.startCalculation = this.startCalculation.bind(this);
   }
 
@@ -103,17 +99,16 @@ class Entry extends Component {
     socket.on('res', (data) => {
       console.log('recieved');
       this.setState({
-        data: data
+        data: data,
+        results: true
       })
-      console.log(this.state);
+      console.log('state:' + this.state);
     });
   }
 
   startCalculation(url) {
-    startData.deter = true;
-    console.log('STARTDATA: ' + JSON.stringify(startData));
     this.setState({
-      data: startData
+      data: {}
     })
     socket.emit('calculate', url);
   }
@@ -141,13 +136,6 @@ class Entry extends Component {
   }
 
   render() {
- 
-
-    //alert('state data: ' + JSON.stringify(this.state.data));
-
-    // alert('state data: ' + JSON.stringify(this.state.data));
-
-
     //alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
@@ -161,11 +149,7 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-
-          { this.state.data && this.state.data.data ? <Results data={this.state} /> : null }
-
-          
-
+          <Results data={startData} />
         </div>
       </div>
     )
