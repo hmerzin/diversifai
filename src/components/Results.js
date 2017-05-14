@@ -1,6 +1,7 @@
 
 
 import React, { Component } from 'react';
+
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
 export default class Results extends Component {
@@ -53,29 +54,19 @@ export default class Results extends Component {
       resultsWrapper: {
         display: 'flex',
         justifyContent: 'center',
-        flex: 1,
+        flex: 1
       },
-      ethnicityWrapper: {
+      rowWrapper: {
         display: 'flex',
         justifyContent: 'center',
-        flex: 1,
-      },
-      ageWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        flex: 1,
-      },
-      genderWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        flex: 1,
+        flex: 1
       }
     }
 
     renderEthnicity () {
       return (
         <div>
-          
+
         </div>
       )
     }
@@ -97,13 +88,13 @@ export default class Results extends Component {
     render() {
         return (
           <div style={this.styles.resultsWrapper}>
-            <div style={this.styles.ethnicityWrapper}>
+            <div style={Object.assign({}, this.styles.rowWrapper, this.styles.ethnicityWrapper)}>
               {this.renderEthnicity()}
             </div>
-            <div style={this.styles.ageWrapper}>
+            <div style={Object.assign({}, this.styles.rowWrapper, this.styles.ageWrapper)}>
               {this.renderAge()}
             </div>
-            <div style={this.styles.genderWrapper}>
+            <div style={Object.assign({}, this.styles.rowWrapper, this.styles.genderWrapper)}>
               {this.renderGender()}
             </div>
           </div>
