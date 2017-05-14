@@ -15,6 +15,7 @@ injectTapEventPlugin();
 import FavoriteSites from './components/FavoriteSites';
 import Search from './components/Search';
 import io from 'socket.io-client';
+import Results from './components/Results';
 
 let socket;
 
