@@ -127,13 +127,14 @@ const CLARIFAI_CHANNEL = 'clarifai-channel';
     withPresence: true
   });
 
-  function get(url, socket) {
+  function get(url, cb) {
 
-  clar.models.predict(Clarifai.GENERAL_MODEL, url).then(
+  clar.models.predict('c0c0ac362b03416da06ab3fa36fb58e3', url).then(
     function(response) {
       console.log(response);
       // do something with response
-      socket.emit('recieve_results', response);
+      //socket.emit('res', response);
+      cb(response);
     },
     function(err) {
       // there was an error
@@ -148,7 +149,9 @@ io.on('connection', (socket) => {
       phantomjs(url).then(images => {
         console.log(images);
         images.forEach(image => {
-          get(image);
+          get(image, (res) => {
+            socket.emit('res', clparse(res));
+          });
         });
       });
     });
