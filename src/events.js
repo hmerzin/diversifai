@@ -1,3 +1,5 @@
 const HANDSHAKE = 'handshake';
+const CALCULATE = 'calculate';
+const CONNECTION = 'conneciton';
 
-export {HANDSHAKE};
+export {HANDSHAKE, CALCULATE, CONNECTION};
