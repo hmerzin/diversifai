@@ -16,20 +16,24 @@ import Search from './components/Search';
 import io from 'socket.io-client';
 
 let socket;
+socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
+socket.emit('connection');
+
+socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
+socket.emit(CONNECTION);
+socket.emit(HANDSHAKE, {
+  hi: 'dude',
+  whats: 'up?'
+});
+
+socket.on('display_results', console.log);
+socket.on('handshake', (data) => {
+  console.log('server handshake: ', data);
+});
 
 class App extends Component {
 
   componentDidMount() {
-    socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-    socket.emit(CONNECTION);
-    socket.emit(HANDSHAKE, {
-      hi: 'dude',
-      whats: 'up?'
-    });
-
-    socket.on('handshake', (data) => {
-      console.log('server handshake: ', data);
-    });
   }
 
   render() {
@@ -50,8 +54,6 @@ class Entry extends Component {
     }
 
     this.startCalculation = this.startCalculation.bind(this);
-    socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-    socket.emit('connection');
   }
 
   componentDidMount() {
@@ -59,7 +61,6 @@ class Entry extends Component {
 
   startCalculation(url) {
     socket.emit('calculate', url);
-    socket.on('display_results', console.log);
   }
 
   render() {
