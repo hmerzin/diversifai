@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
@@ -71,17 +73,39 @@ export default class Results extends Component {
       }
     }
 
+    renderEthnicity () {
+      return (
+        <div>
+          
+        </div>
+      )
+    }
+
+    renderAge () {
+      return (
+        <div>
+        </div>
+      )
+    }
+
+    renderGender () {
+      return (
+        <div>
+        </div>
+      )
+    }
+
     render() {
         return (
           <div style={this.styles.resultsWrapper}>
             <div style={this.styles.ethnicityWrapper}>
-
+              {this.renderEthnicity()}
             </div>
             <div style={this.styles.ageWrapper}>
-
+              {this.renderAge()}
             </div>
             <div style={this.styles.genderWrapper}>
-
+              {this.renderGender()}
             </div>
           </div>
         )
