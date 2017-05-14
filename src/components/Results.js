@@ -121,9 +121,8 @@ export default class Results extends Component {
         )
       }
 
-
-      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data).map((ethnicity) => {
-        quantity = this.props.data.data[ethnicity];
+      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data.data).map((ethnicity) => {
+        quantity = this.props.data.data.data[ethnicity];
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
@@ -155,8 +154,8 @@ export default class Results extends Component {
         )
       }
 
-      const ageData = shuffle([].concat.apply([], Object.keys(this.props.data.age).map((age) => {
-        quantity = this.props.data.age[age];
+      const ageData = shuffle([].concat.apply([], Object.keys(this.props.data.data.age).map((age) => {
+        quantity = this.props.data.data.age[age];
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
@@ -188,8 +187,8 @@ export default class Results extends Component {
         )
       }
 
-      const genderData = shuffle([].concat.apply([], Object.keys(this.props.data.gender).map((gender) => {
-        quantity = this.props.data.gender[gender];
+      const genderData = shuffle([].concat.apply([], Object.keys(this.props.data.data.gender).map((gender) => {
+        quantity = this.props.data.data.gender[gender];
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
