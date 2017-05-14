@@ -14,8 +14,16 @@ var age_counter = {'0-4' : 0, '5-9' : 0, '10-14' : 0, '15-19' : 0, '20-24' : 0, 
                '35-39' : 0, '40-44' : 0, '45-49' : 0, '50-54' : 0, '55-59' : 0, '60-64' : 0,
                '65-69' : 0, '70-74' : 0, '75-79' : 0, '80+' : 0};
 
-function clparse(cl_json) {
-  var regions = cl_json.outputs[0].data.regions;
+function clparse(cl_json){
+
+  var regions = [];
+
+  console.log(cl_json.outputs, cl_json);
+
+  if(cl_json.outputs.length) {
+    regions = cl_json.outputs[0].data.regions;
+  }
+
   for (i = 0; i < regions.length; i++) {
     var face = regions[i].data.face;
 
@@ -82,3 +90,5 @@ function get_age_range(age) {
     return '80+';
   }
 }
+
+module.exports = clparse
