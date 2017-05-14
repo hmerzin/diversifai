@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-document": "0.1.0-pre9",
+    "node-horseman": "^3.3.0",
+    "phantom": "^4.0.3",
     "socket.io": "^2.0.1"
   }
 }
