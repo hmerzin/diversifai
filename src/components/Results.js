@@ -61,7 +61,8 @@ export default class Results extends Component {
         flex: 1
       },
       emoji: {
-        display: 'inline-block'
+        display: 'inline-block',
+        fontSize: '2rem'
       }
     }
 
