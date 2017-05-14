@@ -112,30 +112,20 @@ export default class Results extends Component {
       let us;
 
       function getEmoji(data, i) {
-
-        var ethnicityConstantData = constants.ethnicities.filter((item) => { return item.title === data })[0]
-        console.log(ethnicityConstantData.emojis.length);
-
         var ethnicityConstantData = constants.ethnicities.filter((item) => { console.log(item.title, data); return item.title === data })[0]
         console.log(ethnicityConstantData);
-
         return (
           <div key={data+i} style={this.styles.emoji}>
             {ethnicityConstantData.emojis[Math.floor(Math.random() * ethnicityConstantData.emojis.length  )] + ethnicityConstantData.tone[Math.floor(Math.random() * ethnicityConstantData.tone.length  )]}
           </div>
         )
       }
-    
-
-      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data.data).map((ethnicity) => {
-        quantity = this.props.data.data.data[ethnicity];
 
         console.log(this.props.data.data.data);
 
       const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data.data).map((ethnicity) => {
         quantity = this.props.data.data.data[ethnicity];
         console.log(ethnicity, quantity);
-
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
@@ -148,13 +138,12 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Ethnic Diversity</h4>
-          <Bar rating={0.80} />
+          <Bar ratingColor='green' rating={0.80} />
           {emojiData.map(getEmoji.bind(this))}
         </div>
       )
     }
-    
-  
+
     renderAge () {
       let quantity;
       let us;
@@ -182,7 +171,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Age Diversity</h4>
-          <Bar rating={0.30} />
+          <Bar ratingColor='red' rating={0.30} />
         {ageData.map(getEmoji.bind(this))}
         </div>
       )
@@ -215,7 +204,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Gender Diversity</h4>
-          <Bar style={{display: 'inline-block'}} rating={0.44} />
+          <Bar style={{display: 'inline-block'}} ratingColor='yellow' rating={0.44} />
           {genderData.map(getEmoji.bind(this))}
         </div>
       )
