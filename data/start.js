@@ -5,14 +5,14 @@ module.exports = {
    "black or african american": 0,
    "native hawaiian or pacific islander": 0,
    "middle eastern or north african": 0,
-   "white": 0,
+   "white": 2,
    "other": 0,
    "american indian or alaska native": 0,
    "asian": 1
  },
   age: {
     "0-4": 0,
-    "80+": 0,
+    "80+": 30,
     "30-34": 0,
     "35-39": 0,
     "25-29": 1,
@@ -27,7 +27,7 @@ module.exports = {
     "15-19": 0,
     "60-64": 0,
     "20-24": 0,
-    "45-49": 0
+    "45-49": 11
   },
   gender: {
    "feminine": 0,

@@ -1,12 +1,18 @@
 var ETHNICITIES = {
-  HISPANIC: "hispanic, latino, or spanish origin"
-  BLACK: "black or african american"
-  NHPI: "native hawaiian or pacific islander"
-  MENA: "middle eastern or north african"
-  WHITE: "white"
-  OTHER: "other"
-  AIAN: "american indian or alaska native"
+  HISPANIC: "hispanic, latino, or spanish origin",
+  BLACK: "black or african american",
+  NHPI: "native hawaiian or pacific islander",
+  MENA: "middle eastern or north african",
+  WHITE: "white",
+  OTHER: "other",
+  AIAN: "american indian or alaska native",
   ASIAN: "asian"
+}
+var AGE_RANGE = {
+  BABY: "baby",
+  OLD: "old",
+  MATURE: "mature",
+  CHILD: "child"
 }
 
 module.exports = {
@@ -51,5 +57,23 @@ module.exports = {
       tone: ["🏻","🏼","🏽"],
       emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
     },
+  ],
+  ages: [
+    {
+      title: AGE_RANGE.BABY,
+      emojis: ["👶"]
+    },
+    {
+      title: AGE_RANGE.CHILD,
+      emojis: ["👦", "👧"]
+    },
+    {
+      title: AGE_RANGE.MATURE,
+      emojis: ["👷‍♀️", "👷", "👨‍", "👩"]
+    },
+    {
+      title: AGE_RANGE.OLD,
+      emojis: ["👵", "👴"]
+    }
   ]
 }
