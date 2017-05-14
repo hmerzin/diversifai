@@ -1,7 +1,6 @@
 
 
 import React, { Component } from 'react';
-
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
 export default class Results extends Component {
