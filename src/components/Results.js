@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
-export default class Search extends Component {
+export default class Results extends Component {
     constructor(props) {
       super();
 
