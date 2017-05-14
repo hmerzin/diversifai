@@ -1,0 +1,22 @@
+.red {
+    background-color: #FF5252;
+}
+
+.yellow {
+    background-color: #EEFF41;
+}
+
+.green {
+    background-color: #00E676;
+}
+
+.barWrapper {
+    borderColor: #90A4AE;
+    opacity: 1;
+    borderRadius: 10;
+    display: flex;
+    flexDirection: row;
+    width: 10%;
+    height: 15;
+    borderWidth: 2;
+}

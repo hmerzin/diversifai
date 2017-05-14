@@ -2,11 +2,11 @@ module.exports = {
   url: false,
   data: {
    "hispanic, latino, or spanish origin": 0,
-   "black or african american": 0,
+   "black or african american": 10,
    "native hawaiian or pacific islander": 0,
-   "middle eastern or north african": 0,
-   "white": 2,
-   "other": 0,
+   "middle eastern or north african": 10,
+   "white": 10,
+   "other": 2,
    "american indian or alaska native": 0,
    "asian": 1
  },
