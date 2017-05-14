@@ -42,9 +42,7 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      url: false
-    }
+    this.state = startData;
 
     this.startCalculation = this.startCalculation.bind(this);
   }

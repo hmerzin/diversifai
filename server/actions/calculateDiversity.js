@@ -41,19 +41,25 @@ module.exports = function (data) {
     },
     status: function(s) {
         // handle status
+        console.log(s);
     }
   });
 
   pubnub.publish(
     {
       message: {
-          url: 'http://'
+          url: 'https://www.thewrap.com/wp-content/uploads/2015/11/Donald-Trump.jpg'
       },
       channel: CLARIFAI_CHANNEL
     },
     function (status, response) {
         // handle status, response
+        console.log(status, response);
     }
+<<<<<<< HEAD
 );
     return {diversity: .99};
+=======
+  );
+>>>>>>> 9b5b6cde52ee1261a53c31e196d00b6567262763
 }
