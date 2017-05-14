@@ -175,7 +175,7 @@ export default class Results extends Component {
       let us;
 
       function getEmoji(data, i) {
-        var genderConstantData = constants.gender.filter((item) => { console.log(item, data); return item.title === data })[0]
+        var genderConstantData = constants.gender.filter((item) => { return item.title === data })[0]
         return (
           <div key={data+i} style={this.styles.emoji}>
             {genderConstantData.emojis[Math.floor(Math.random() * genderConstantData.emojis.length  )]}
