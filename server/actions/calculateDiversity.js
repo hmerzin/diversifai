@@ -2,9 +2,13 @@ const PubNub = require('pubnub');
 
 const CLARIFAI_CHANNEL = 'clarifai-channel'
 
+const phantomjs = require('phantom');
+
 module.exports = function (data) {
 
   console.log(data);
+
+  console.log(phantomjs);
 
   // send one image at a time to pubnub and get clarif.ai response
   // run calculation algorithm
