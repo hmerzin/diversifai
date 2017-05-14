@@ -68,6 +68,10 @@ class Entry extends Component {
       weight: '100vw',
       flexDirection: 'column'
     },
+    headerWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     bodyWrapper: {
       display: 'flex',
       flexDirection: 'column',
@@ -78,12 +82,14 @@ class Entry extends Component {
   render() {
     return (
       <div style={this.styles.appWrapper}>
-        <div style={{'padding': 20}}>
-          <h2>Data-Driven Diversity</h2>
-          <h4>Analyze the Gender & Race Representation of any brand.</h4>
+        <div style={this.styles.headerWrapper}>
+          <div style={{'padding': 20, textAlign: 'center'}}>
+            <h2>Data-Driven Diversity</h2>
+            <h4>Analyze the Gender & Race Representation of any brand.</h4>
+          </div>
+          <Search onSubmit={this.startCalculation}/>
         </div>
-        <Search onSubmit={this.startCalculation}/>
-      <div style={this.styles.bodyWrapper}>
+        <div style={this.styles.bodyWrapper}>
           { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
         </div>
       </div>

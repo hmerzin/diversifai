@@ -49,12 +49,31 @@ export default class Results extends Component {
     }
 
     styles = {
-
+      resultsWrapper: {
+        display: 'flex',
+        justifyContent: 'center',
+        flex: 1,
+      },
+      ethnicityWrapper: {
+        display: 'flex',
+        justifyContent: 'center',
+        flex: 1,
+      },
+      ageWrapper: {
+        display: 'flex',
+        justifyContent: 'center',
+        flex: 1,
+      },
+      genderWrapper: {
+        display: 'flex',
+        justifyContent: 'center',
+        flex: 1,
+      }
     }
 
     render() {
         return (
-          <div style={this.style.resultsWrapper}>
+          <div style={this.styles.resultsWrapper}>
             <div style={this.styles.ethnicityWrapper}>
 
             </div>
