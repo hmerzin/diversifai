@@ -28,5 +28,5 @@ function getImageURLs(text) {
         sources.push(buildStr);
         buildStr = ''; // empty out
     })
-    console.log(sources);
+    // console.log(sources);
 }
