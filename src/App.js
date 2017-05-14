@@ -7,6 +7,7 @@ import {
   // CALCULATE,
   CONNECTION
 } from './events';
+import startData from '../data/start';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -72,6 +73,10 @@ class Entry extends Component {
   render() {
     return (
       <div style={this.styles.appWrapper}>
+        <div style={{'padding': 20}}>
+          <h2>Data-Driven Diversity</h2>
+          <h4>Analyze the Gender & Race Representation of any brand.</h4>
+        </div>
         <Search onSubmit={this.startCalculation}/>
         { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
       </div>
