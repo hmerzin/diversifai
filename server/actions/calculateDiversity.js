@@ -4,8 +4,6 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
 
 module.exports = function (data) {
 
-  console.log(data);
-
   // send one image at a time to pubnub and get clarif.ai response
   // run calculation algorithm
 
@@ -57,4 +55,5 @@ module.exports = function (data) {
         // handle status, response
     }
 );
+    return {diversity: .99};
 }
