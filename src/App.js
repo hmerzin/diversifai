@@ -91,7 +91,7 @@ class Entry extends Component {
         <div style={this.styles.headerWrapper}>
           <div style={{'padding': 20, textAlign: 'center'}}>
             <h2>Data-Driven Diversity</h2>
-          <h4>Analyze the Intersectionality Rating of any brand.</h4>
+          <h4>Analyze the Intersectionality Rating of any website.</h4>
           </div>
           <Search onSubmit={this.startCalculation}/>
         </div>
