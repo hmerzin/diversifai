@@ -16,7 +16,8 @@ import Search from './components/Search';
 import Results from './components/Results';
 import io from 'socket.io-client';
 import startData from '../data/start';
-import Bar from './components/Bar.js';
+
+import '../styles/index.css';
 
 let socket;
 
@@ -67,16 +68,20 @@ class Entry extends Component {
       display: 'flex',
       height: '100vh',
       weight: '100vw',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      backgroundColor: 'white',
+      color: '#4aa397'
     },
     headerWrapper: {
       alignItems: 'center',
       justifyContent: 'center',
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
     },
     bodyWrapper: {
       display: 'flex',
-      flexDirection: 'column',
-      flex: 1
+      flexDirection: 'column'
     }
   }
 
@@ -86,12 +91,14 @@ class Entry extends Component {
         <div style={this.styles.headerWrapper}>
           <div style={{'padding': 20, textAlign: 'center'}}>
             <h2>Data-Driven Diversity</h2>
-            <h4>Analyze the Gender & Race Representation of any brand.</h4>
+            <span>
+              We empower anyone to discover how websites represent minorities.
+            </span>
           </div>
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
+          { this.state.data ? <Results data={this.state} /> : <FavoriteSites/> }
         </div>
       </div>
     )
