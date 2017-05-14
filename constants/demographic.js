@@ -9,23 +9,10 @@ var ETHNICITIES = {
   ASIAN: "asian"
 }
 var AGE_RANGE = {
-  "0-4": "baby",
-  "80+": "old",
-  "30-34": "mature",
-  "35-39": "mature",
-  "25-29": "mature",
-  "10-14": "child",
-  "40-44": "mature",
-  "5-9": "child",
-  "50-54": "old",
-  "55-59": "old",
-  "70-74": "old",
-  "75-79": "old",
-  "65-69": "old",
-  "15-19": "child",
-  "60-64": "old",
-  "20-24": "young",
-  "45-49": "mature"
+  BABY: "baby",
+  OLD: "old",
+  MATURE: "mature",
+  CHILD: "child"
 }
 
 module.exports = {

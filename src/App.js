@@ -98,7 +98,7 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
+          { this.state.data ? <Results data={this.state} /> : <FavoriteSites/> }
         </div>
       </div>
     )

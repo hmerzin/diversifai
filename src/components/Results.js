@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
 import constants from '../../constants/demographic.js';
-console.log(constants);
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
+
+var agemap = {
+  "0-4": "baby",
+  "80+": "old",
+  "30-34": "mature",
+  "35-39": "mature",
+  "25-29": "mature",
+  "10-14": "child",
+  "40-44": "mature",
+  "5-9": "child",
+  "50-54": "old",
+  "55-59": "old",
+  "70-74": "old",
+  "75-79": "old",
+  "65-69": "old",
+  "15-19": "child",
+  "60-64": "old",
+  "20-24": "young",
+  "45-49": "mature"
+};
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -100,8 +119,8 @@ export default class Results extends Component {
       }
 
 
-      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data).map((ethnicity) => {
-        quantity = this.props.data[ethnicity];
+      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data).map((ethnicity) => {
+        quantity = this.props.data.data[ethnicity];
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
@@ -126,24 +145,28 @@ export default class Results extends Component {
       let us;
 
       function getEmoji(data, i) {
-        var ageConstantData = constants.ages.filter((item) => { return item.title === data })[0]
+        var ageConstantData = constants.ages.filter((item) => { return item.title === agemap[data] })[0]
         return (
           <div key={data+i} style={this.styles.emoji}>
-            {ageConstantData.emojis[Math.floor(Math.random() * ageConstantData.emojis.length  )] + ageConstantData.tone[Math.floor(Math.random() * ageConstantData.tone.length  )]}
+            {ageConstantData.emojis[Math.floor(Math.random() * ageConstantData.emojis.length  )]}
           </div>
         )
       }
 
-      const ageData = shuffle([].concat.apply([], Object.keys(this.props.data).map((ethnicity) => {
-        quantity = this.props.data[ethnicity];
+      console.log(123123123, this.props);
+
+      const ageData = shuffle([].concat.apply([], Object.keys(this.props.data.age).map((age) => {
+        quantity = this.props.data.age[age];
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
-            us[i] = ethnicity;
+            us[i] = age;
           }
           return us;
         }
       }).filter(function(a) { return a; })));
+
+      console.log(ageData);
 
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
