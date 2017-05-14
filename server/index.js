@@ -119,7 +119,7 @@ io.on('connection', (socket) => {
     const images = new Promise((resolve, reject) => {
       phantomjs(url).then(images => {
         images.forEach(image => {
-          pn(image, pubnub, (data) => {socket.emit('recieve_results', data);});
+          pn(image, pubnub, (data) => {console.log(data);});//{socket.emit('recieve_results', data.filter((val, index) => {if(index < 5) return true}));});
         });
         console.log(images.length);
       });
