@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {HANDSHAKE, CALCULATE, CONNECTION} from './events';
+import {
+  HANDSHAKE,
+  // CALCULATE,
+  CONNECTION
+} from './events';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -46,18 +50,16 @@ class Entry extends Component {
     }
 
     this.startCalculation = this.startCalculation.bind(this);
-  }
-
-  componentDidMount() {
     socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
     socket.emit('connection');
   }
 
+  componentDidMount() {
+  }
+
   startCalculation(url) {
     socket.emit('calculate', url);
-    socket.on('display_results', (data) => {
-      console.log(data);
-    });
+    socket.on('display_results', console.log);
   }
 
   render() {

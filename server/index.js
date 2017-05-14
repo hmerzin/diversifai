@@ -7,6 +7,6 @@ io.on('connection', (socket) => {
   // when the client emits 'handshake', this listens and executes
   socket.on('calculate', (data) => {
     calculateDiversity(data);
-    socket.emit('display_results', 'you got it dude!');
+    socket.emit('display_results', data);
   });
 });
