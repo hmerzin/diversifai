@@ -1,6 +1,6 @@
 const Horseman = require('node-horseman');
 var horseman = new Horseman();
-const URL = 'http://www.brooklynbridge.vc/'
+const URL = 'http://www.bestbuy.com/'
 
 module.exports = () => {
     horseman
@@ -28,5 +28,15 @@ function getImageURLs(text) {
         sources.push(buildStr);
         buildStr = ''; // empty out
     })
+<<<<<<< HEAD
     // console.log(sources);
 }
+=======
+    sources = sources.filter((elem) => {
+        if (elem.length > 0) return true;
+        return false;
+    });
+    console.log(sources);
+    return sources;
+}
+>>>>>>> be6f165efdb91ccce0d2846a37bf1acf1fd0aa05
