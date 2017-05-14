@@ -112,17 +112,30 @@ export default class Results extends Component {
       let us;
 
       function getEmoji(data, i) {
+
         var ethnicityConstantData = constants.ethnicities.filter((item) => { return item.title === data })[0]
         console.log(ethnicityConstantData.emojis.length);
+
+        var ethnicityConstantData = constants.ethnicities.filter((item) => { console.log(item.title, data); return item.title === data })[0]
+        console.log(ethnicityConstantData);
+
         return (
           <div key={data+i} style={this.styles.emoji}>
             {ethnicityConstantData.emojis[Math.floor(Math.random() * ethnicityConstantData.emojis.length  )] + ethnicityConstantData.tone[Math.floor(Math.random() * ethnicityConstantData.tone.length  )]}
           </div>
         )
       }
+    
 
       const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data.data).map((ethnicity) => {
         quantity = this.props.data.data.data[ethnicity];
+
+        console.log(this.props.data.data.data);
+
+      const emojiData = shuffle([].concat.apply([], Object.keys(this.props.data.data.data).map((ethnicity) => {
+        quantity = this.props.data.data.data[ethnicity];
+        console.log(ethnicity, quantity);
+
         if (quantity) {
           us = new Array(quantity);
           for (var i = 0; i < us.length; i++) {
@@ -140,7 +153,8 @@ export default class Results extends Component {
         </div>
       )
     }
-
+    
+  
     renderAge () {
       let quantity;
       let us;
@@ -212,12 +226,12 @@ export default class Results extends Component {
      
       var pieData = [];
 
-      Object.keys(this.state.data.age).forEach((elem) => {
+      Object.keys(this.state.data.data.age).forEach((elem) => {
         // [elem] is the value 
         // label is the key
-        if (this.state.data.age[elem] !== 0){
+        if (this.state.data.data.age[elem] !== 0){
           pieData.push(
-            {label: elem, value: this.state.data.age[elem]}
+            {label: elem, value: this.state.data.data.age[elem]}
           )
           console.log('pieData: ' + pieData);
         }
