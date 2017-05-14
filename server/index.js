@@ -36,6 +36,33 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
         'other': 0
       };
 
+      // gender counter
+      var gender_counter = {
+        'feminine': 0,
+        'masculine': 0
+      };
+
+      // age counter
+      var age_counter = {
+        '0-4': 0,
+        '5-9': 0,
+        '10-14': 0,
+        '15-19': 0,
+        '20-24': 0,
+        '25-29': 0,
+        '30-34': 0,
+        '35-39': 0,
+        '40-44': 0,
+        '45-49': 0,
+        '50-54': 0,
+        '55-59': 0,
+        '60-64': 0,
+        '65-69': 0,
+        '70-74': 0,
+        '75-79': 0,
+        '80+': 0
+      };
+
       // handle message
       var channelName = m.channel; // The channel for which the message belongs
       var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
@@ -43,17 +70,26 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
       var msg = m.message; // The Payload
 
       var parsed_demographic_data = clparse(m.message);
-      console.log(parsed_demographic_data);
 
       // increment demographic data
       ethnicity = parsed_demographic_data[0] // ethnicity
-      // for (var key in ethnicity_counter) {
-      //   console.log("counter", ethnicity_counter[key]);
-      //   ethnicity_counter[key] = ethnicity_counter[key] + 1;
-      // }
-      // parsed_demographic_data[1] // gender
-      // parsed_demographic_data[2] // age
-      // console.log(ethnicity);
+      for (var key in ethnicity_counter) {
+        ethnicity_counter[key] = ethnicity_counter[key] + ethnicity[key];
+      }
+      console.log(ethnicity_counter);
+
+      gender = parsed_demographic_data[1] // gender
+      for (var key in gender_counter) {
+        gender_counter[key] = gender_counter[key] + gender[key];
+      }
+      console.log(gender_counter);
+
+      age = parsed_demographic_data[2] // age
+      for (var key in age_counter) {
+        age_counter[key] = age_counter[key] + age[key];
+      }
+      console.log(age_counter);
+
     },
     presence: function(p) {
       // handle presence
@@ -77,16 +113,6 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
     withPresence: true
   });
 
-
-
-
-
-
-
-
-
-
-
   io.on('connection', (socket) => {
 
   socket.on('handshake', function(data) {
@@ -97,7 +123,9 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
       message: data
     });
     socket.on('calculate', (data) => {
-      calculateDiversity(data, pubnub);
+      for img_url in img_url_arr {
+        calculateDiversity(data, pubnub);
+      }
     });
   });
 })
