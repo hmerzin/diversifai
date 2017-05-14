@@ -46,8 +46,7 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = startData;
-
+    this.state = {data: {deter: false}};
     this.startCalculation = this.startCalculation.bind(this);
   }
 
@@ -60,8 +59,10 @@ class Entry extends Component {
   }
 
   startCalculation(url) {
+    startData.deter = true;
+    console.log('STARTDATA: ' + JSON.stringify(startData));
     this.setState({
-      data: {}
+      data: startData
     })
     socket.emit('calculate', url);
   }
@@ -89,7 +90,7 @@ class Entry extends Component {
   }
 
   render() {
-    alert('state data: ' + JSON.stringify(this.state.data));
+    // alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
         <div style={this.styles.headerWrapper}>
@@ -102,7 +103,7 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          { this.state.data ? <Results data={this.state} /> : <FavoriteSites/> }
+          { this.state.data.deter ? <Results data={this.state} /> : <FavoriteSites/> }
         </div>
       </div>
     )
