@@ -22,11 +22,6 @@ import '../styles/index.css';
 let socket;
 
 socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-socket.emit(CONNECTION);
-socket.emit(HANDSHAKE, {
-  hi: 'dude',
-  whats: 'up?'
-});
 
 socket.on('handshake', (data) => {
   console.log('server handshake: ', data);
