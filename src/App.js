@@ -7,6 +7,7 @@ import {
   // CALCULATE,
   CONNECTION
 } from './events';
+import startData from './data/start';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -42,9 +43,7 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      url: false
-    }
+    this.state = startData;
 
     this.startCalculation = this.startCalculation.bind(this);
   }
