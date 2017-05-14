@@ -8,6 +8,7 @@
   "dependencies": {
     "material-ui": "^0.18.1",
     "node-phantom": "^0.2.5",
+    "pubnub": "^4.8.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-materialize": "^0.18.4",
