@@ -3,6 +3,26 @@ import constants from '../../constants/demographic.js';
 console.log(constants);
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 export default class Results extends Component {
     constructor(props) {
       super();
@@ -67,8 +87,6 @@ export default class Results extends Component {
     }
 
     renderEthnicity () {
-
-      const people = [];
       let quantity;
       let us;
 
@@ -79,25 +97,6 @@ export default class Results extends Component {
             {ethnicityConstantData.emojis[Math.floor(Math.random() * ethnicityConstantData.emojis.length  )] + ethnicityConstantData.tone[Math.floor(Math.random() * ethnicityConstantData.tone.length  )]}
           </div>
         )
-      }
-
-      function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-
-        return array;
       }
 
 
@@ -123,8 +122,33 @@ export default class Results extends Component {
     }
 
     renderAge () {
+      let quantity;
+      let us;
+
+      function getEmoji(data, i) {
+        var ageConstantData = constants.ages.filter((item) => { return item.title === data })[0]
+        return (
+          <div key={data+i} style={this.styles.emoji}>
+            {ageConstantData.emojis[Math.floor(Math.random() * ageConstantData.emojis.length  )] + ageConstantData.tone[Math.floor(Math.random() * ageConstantData.tone.length  )]}
+          </div>
+        )
+      }
+
+      const ageData = shuffle([].concat.apply([], Object.keys(this.props.data).map((ethnicity) => {
+        quantity = this.props.data[ethnicity];
+        if (quantity) {
+          us = new Array(quantity);
+          for (var i = 0; i < us.length; i++) {
+            us[i] = ethnicity;
+          }
+          return us;
+        }
+      }).filter(function(a) { return a; })));
+
       return (
-        <div>
+        <div style={{textAlign: 'center', padding: '1rem'}}>
+          <h4>Age Diversity</h4>
+        {ageData.map(getEmoji.bind(this))}
         </div>
       )
     }
