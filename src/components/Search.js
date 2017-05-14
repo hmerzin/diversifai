@@ -62,7 +62,7 @@ export default class Search extends Component {
         return (
           <div>
             <form style={this.style.form} onSubmit={this.handleSubmit}>
-              <TextField style={{width: this.calcWidth(), margin: 50}} floatingLabelText="URL" onChange={this.updateValue} errorText={this.state.error ? "You need to enter a valid URL" : null} />
+              <TextField style={{width: this.calcWidth(), margin: 50}} floatingLabelText="Enter a URL" onChange={this.updateValue} errorText={this.state.error ? "😑 Enter a valid URL " : null} />
               <FlatButton style={{marginTop: 75, marginLeft: 15}} label="Submit" type="submit" primary={true} />
             </form>
           </div>

@@ -3,12 +3,14 @@ var io = require('socket.io')(port);
 const phantomjs = require('./phantom');
 const PubNub = require('pubnub');
 var clparse = require('./actions/clparser');
+const http = require('http');
+const fs = require('fs');
 
 var calculateDiversity = require('./actions/pub_nub.js').bind(this);
 
 const CLARIFAI_CHANNEL = 'clarifai-channel'
 
-io.on('connection', (socket) => {
+
   // when the client emits 'handshake', this listens and executes
   // console.log('whoa');
 
@@ -33,32 +35,7 @@ io.on('connection', (socket) => {
         'hispanic, latino, or spanish origin': 0,
         'other': 0
       };
-      // gender counter
-      var gender_counter = {
-        'feminine': 0,
-        'masculine': 0
-      };
 
-      // age counter
-      var age_counter = {
-        '0-4': 0,
-        '5-9': 0,
-        '10-14': 0,
-        '15-19': 0,
-        '20-24': 0,
-        '25-29': 0,
-        '30-34': 0,
-        '35-39': 0,
-        '40-44': 0,
-        '45-49': 0,
-        '50-54': 0,
-        '55-59': 0,
-        '60-64': 0,
-        '65-69': 0,
-        '70-74': 0,
-        '75-79': 0,
-        '80+': 0
-      };
       // handle message
       var channelName = m.channel; // The channel for which the message belongs
       var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
@@ -66,17 +43,17 @@ io.on('connection', (socket) => {
       var msg = m.message; // The Payload
 
       var parsed_demographic_data = clparse(m.message);
+      console.log(parsed_demographic_data);
 
       // increment demographic data
       ethnicity = parsed_demographic_data[0] // ethnicity
-      for (var key in ethnicity_counter) {
-        ethnicity_counter[key] = ethnicity_counter[key] + ethnicity[key];
-      }
-      console.log(ethnicity_counter);
-
+      // for (var key in ethnicity_counter) {
+      //   console.log("counter", ethnicity_counter[key]);
+      //   ethnicity_counter[key] = ethnicity_counter[key] + 1;
+      // }
       // parsed_demographic_data[1] // gender
       // parsed_demographic_data[2] // age
-      // console.log(m.message);
+      // console.log(ethnicity);
     },
     presence: function(p) {
       // handle presence
@@ -91,7 +68,7 @@ io.on('connection', (socket) => {
     },
     status: function(s) {
       // handle status
-      console.log(s);
+      // console.log(s);
     }
   });
 
@@ -99,6 +76,18 @@ io.on('connection', (socket) => {
     channels: [CLARIFAI_CHANNEL],
     withPresence: true
   });
+
+
+
+
+
+
+
+
+
+
+
+  io.on('connection', (socket) => {
 
   socket.on('handshake', function(data) {
     phantomjs();
@@ -112,3 +101,38 @@ io.on('connection', (socket) => {
     });
   });
 })
+
+const app = http.createServer((req, res) => {
+  //console.log(req.url);
+  const extension = req.url.split('.')[req.url.split('.').length - 1];
+  if(req.url === '/') {
+    console.log('/');
+    fs.readFile('../build/index.html', 'utf-8', (err, data) => {
+      res.setHeader('Content-Type', 'text/html');
+      res.setHeader('X-Foo', 'bar');
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data);
+    });
+  } else {
+
+    console.log(extension);
+    const file = fs.readFile('../build' + req.url, 'utf-8', (err, data) => {
+      if (extension === 'css') {
+        res.setHeader('Content-Type', 'Styleheet');
+        res.writeHead(200, {'Content-Type': 'Stylesheet'});
+        console.log(data);
+        res.end(data);
+      }
+
+      if(extension === 'js') {
+        res.setHeader('Content-Type', 'text/javascript');
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        console.log(data);
+        res.end(data);
+      }
+    });
+  }
+
+});
+
+app.listen(3002);

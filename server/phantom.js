@@ -29,5 +29,10 @@ function getImageURLs(text) {
         buildStr = ''; // empty out
     })
 
+    sources = sources.filter((elem) => {
+        if (elem.length > 0) return true;
+        return false;
+    });
     // console.log(sources);
+    return sources;
 }
