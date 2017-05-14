@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-import LargeTextField from './LargeTextField';
 
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
@@ -64,7 +63,7 @@ export default class Search extends Component {
           <div>
             <form style={this.style.form} onSubmit={this.handleSubmit}>
               <TextField style={{width: this.calcWidth(), margin: 50}} floatingLabelText="URL" onChange={this.updateValue} errorText={this.state.error ? "You need to enter a valid URL" : null} />
-              <FlatButton style={{marginTop: 30, marginLeft: 15}} label="Submit" type="submit" primary={true} />
+              <FlatButton style={{marginTop: 75, marginLeft: 15}} label="Submit" type="submit" primary={true} />
             </form>
           </div>
         )
