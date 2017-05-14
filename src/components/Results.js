@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import constants from '../../constants/demographic.js';
+import Bar from './Bar';
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
 
@@ -95,9 +96,10 @@ export default class Results extends Component {
         flex: 1
       },
       rowWrapper: {
-        display: 'flex',
+        display: 'block',
+        float: 'left',
+        width: '33%',
         justifyContent: 'center',
-        flex: 1
       },
       emoji: {
         display: 'inline-block',
@@ -133,6 +135,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Ethnic Diversity</h4>
+          <Bar ratingColor='green' rating={0.80} />
           {emojiData.map(getEmoji.bind(this))}
         </div>
       )
@@ -165,6 +168,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Age Diversity</h4>
+          <Bar ratingColor='red' rating={0.30} />
         {ageData.map(getEmoji.bind(this))}
         </div>
       )
@@ -197,6 +201,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Gender Diversity</h4>
+          <Bar style={{display: 'inline-block'}} ratingColor='yellow' rating={0.44} />
           {genderData.map(getEmoji.bind(this))}
         </div>
       )
@@ -206,13 +211,16 @@ export default class Results extends Component {
         return (
           <div style={this.styles.resultsWrapper}>
             <div style={Object.assign({}, this.styles.rowWrapper, this.styles.ethnicityWrapper)}>
+              
               {this.renderEthnicity()}
             </div>
             <div style={Object.assign({}, this.styles.rowWrapper, this.styles.ageWrapper)}>
+              
               {this.renderAge()}
             </div>
             <div style={Object.assign({}, this.styles.rowWrapper, this.styles.genderWrapper)}>
               {this.renderGender()}
+              
             </div>
           </div>
         )

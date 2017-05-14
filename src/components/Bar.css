@@ -3,11 +3,12 @@
 }
 
 .yellow {
-    background-color: #EEFF41;
+    background-color: #FFEB3B/*#EEFF41*/;
 }
 
 .green {
-    background-color: #00E676;
+    background-color: #4aa397;
+    opacity: 75%;
 }
 
 .barWrapper {
@@ -19,4 +20,5 @@
     width: 10%;
     height: 15;
     borderWidth: 2;
+    margin: .2rem auto .5rem !important;
 }
