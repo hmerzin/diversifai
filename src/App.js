@@ -90,7 +90,7 @@ class Entry extends Component {
   }
 
   render() {
-    // alert('state data: ' + JSON.stringify(this.state.data));
+    alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
         <div style={this.styles.headerWrapper}>
