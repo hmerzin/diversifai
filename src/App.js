@@ -24,16 +24,11 @@ socket.emit(HANDSHAKE, {
   whats: 'up?'
 });
 
-socket.on('display_results', console.log);
 socket.on('handshake', (data) => {
   console.log('server handshake: ', data);
 });
 
 class App extends Component {
-
-  componentDidMount() {
-  }
-
   render() {
     return (
       <MuiThemeProvider>
@@ -55,6 +50,11 @@ class Entry extends Component {
   }
 
   componentDidMount() {
+    socket.on('display_results', this.displayResults);
+  }
+
+  displayResults(data) {
+    console.log(data);
   }
 
   startCalculation(url) {
