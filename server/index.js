@@ -5,10 +5,10 @@ const PubNub = require('pubnub');
 var clparse = require('./actions/clparser');
 const http = require('http');
 const fs = require('fs');
+const pn = require('./actions/pub_nub.js');
 
 var calculateDiversity = require('./actions/pub_nub.js').bind(this);
 
-<<<<<<< HEAD
 const CLARIFAI_CHANNEL = 'clarifai-channel'
 
 
@@ -77,19 +77,19 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
       for (var key in ethnicity_counter) {
         ethnicity_counter[key] = ethnicity_counter[key] + ethnicity[key];
       }
-      console.log(ethnicity_counter);
+      //console.log(ethnicity_counter);
 
       gender = parsed_demographic_data[1] // gender
       for (var key in gender_counter) {
         gender_counter[key] = gender_counter[key] + gender[key];
       }
-      console.log(gender_counter);
+      //console.log(gender_counter);
 
       age = parsed_demographic_data[2] // age
       for (var key in age_counter) {
         age_counter[key] = age_counter[key] + age[key];
       }
-      console.log(age_counter);
+      //console.log(age_counter);
 
     },
     presence: function(p) {
@@ -114,34 +114,21 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
     withPresence: true
   });
 
-  io.on('connection', (socket) => {
-
-  socket.on('handshake', function(data) {
-    phantomjs();
-    // we tell the client to execute 'handshake'
-    console.log(data);
-    socket.emit('handshake', {
-      message: data
-    });
-    socket.on('calculate', (data) => {
-      for img_url in img_url_arr {
-        calculateDiversity(data, pubnub);
-      }
-    });
-=======
 io.on('connection', (socket) => {
   socket.on('calculate', (url) => {
     const images = new Promise((resolve, reject) => {
       phantomjs(url).then(images => {
-        console.log(images);
+        images.forEach(image => {
+          pn(image, pubnub, (data) => {socket.emit('recieve_results', data);});
+        });
+        console.log(images.length);
       });
->>>>>>> 79a9b615e13a2b550d6892b67e9e060db8be724f
   });
 
 
 
 
-    //socket.emit('recieve_results', diversityNum);
+    
   });
 });
 

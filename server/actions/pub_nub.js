@@ -39,11 +39,9 @@ var age_counter = {
 
 const CLARIFAI_CHANNEL = 'clarifai-channel'
 
-const phantomjs = require('phantom');
+module.exports = function(data, pubnub, done) {
 
-module.exports = function(data, pubnub) {
-
-  console.log(data);
+  //console.log(data);
 
   // console.log(phantomjs);
 
@@ -52,11 +50,12 @@ module.exports = function(data, pubnub) {
 
   pubnub.publish({
       message: {
-        url: 'https://img.scoop.it/gQindO5YfQ6IBrXnofyKIDl72eJkfbmt4t8yenImKBVvK0kTmF0xjctABnaLJIm9'
+        url: data
       },
       channel: CLARIFAI_CHANNEL
     },
     function(status, response) {
+      done(response);
       // handle status, response
       // console.log(status, response);
     }

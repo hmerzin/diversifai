@@ -41,8 +41,8 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = startData;
-
+    this.state = {};
+    this.handleResponse = this.handleResponse.bind(this);
     this.startCalculation = this.startCalculation.bind(this);
   }
 
@@ -51,7 +51,10 @@ class Entry extends Component {
   }
 
   handleResponse(data) {
-    console.log('data:' + data);
+    this.setState({
+      data: data
+    });
+    console.log(this.state);
   }
 
   startCalculation(url) {
@@ -93,7 +96,7 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          { this.state.data ? <Results data={this.state} /> : <FavoriteSites/> }
+          { this.state.data ? <Results data={this.state} /> : null }
         </div>
       </div>
     )

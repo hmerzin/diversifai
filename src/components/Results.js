@@ -113,6 +113,7 @@ export default class Results extends Component {
 
       function getEmoji(data, i) {
         var ethnicityConstantData = constants.ethnicities.filter((item) => { return item.title === data })[0]
+        console.log(ethnicityConstantData.emojis.length);
         return (
           <div key={data+i} style={this.styles.emoji}>
             {ethnicityConstantData.emojis[Math.floor(Math.random() * ethnicityConstantData.emojis.length  )] + ethnicityConstantData.tone[Math.floor(Math.random() * ethnicityConstantData.tone.length  )]}
