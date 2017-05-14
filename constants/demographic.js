@@ -14,6 +14,10 @@ var AGE_RANGE = {
   MATURE: "mature",
   CHILD: "child"
 }
+var GENDER = {
+  FEMININE: 'feminine',
+  MASCULINE: 'masculine'
+}
 
 module.exports = {
   ethnicities: [
@@ -74,6 +78,16 @@ module.exports = {
     {
       title: AGE_RANGE.OLD,
       emojis: ["👵", "👴"]
+    }
+  ],
+  gender: [
+    {
+      title: GENDER.FEMININE,
+      emojis: ["♀"]
+    },
+    {
+      title: GENDER.MASCULINE,
+      emojis: ["♂"]
     }
   ]
 }

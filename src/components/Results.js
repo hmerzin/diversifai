@@ -130,8 +130,6 @@ export default class Results extends Component {
         }
       }).filter(function(a) { return a; })));
 
-      console.log(emojiData);
-
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Ethnic Diversity</h4>
@@ -153,8 +151,6 @@ export default class Results extends Component {
         )
       }
 
-      console.log(123123123, this.props);
-
       const ageData = shuffle([].concat.apply([], Object.keys(this.props.data.age).map((age) => {
         quantity = this.props.data.age[age];
         if (quantity) {
@@ -166,8 +162,6 @@ export default class Results extends Component {
         }
       }).filter(function(a) { return a; })));
 
-      console.log(ageData);
-
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Age Diversity</h4>
@@ -177,8 +171,33 @@ export default class Results extends Component {
     }
 
     renderGender () {
+      let quantity;
+      let us;
+
+      function getEmoji(data, i) {
+        var genderConstantData = constants.gender.filter((item) => { return item.title === data })[0]
+        return (
+          <div key={data+i} style={this.styles.emoji}>
+            {genderConstantData.emojis[Math.floor(Math.random() * genderConstantData.emojis.length  )]}
+          </div>
+        )
+      }
+
+      const genderData = shuffle([].concat.apply([], Object.keys(this.props.data.gender).map((gender) => {
+        quantity = this.props.data.gender[gender];
+        if (quantity) {
+          us = new Array(quantity);
+          for (var i = 0; i < us.length; i++) {
+            us[i] = gender;
+          }
+          return us;
+        }
+      }).filter(function(a) { return a; })));
+
       return (
-        <div>
+        <div style={{textAlign: 'center', padding: '1rem'}}>
+          <h4>Gender Diversity</h4>
+          {genderData.map(getEmoji.bind(this))}
         </div>
       )
     }
