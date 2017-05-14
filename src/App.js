@@ -16,8 +16,6 @@ import Search from './components/Search';
 import io from 'socket.io-client';
 
 let socket;
-socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-socket.emit('connection');
 
 socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
 socket.emit(CONNECTION);
