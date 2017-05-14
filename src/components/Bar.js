@@ -14,6 +14,7 @@ export default class Bar extends Component {
         width: document.body.clientWidth * .2,
         height: 20,
         borderWidth: 1,
+        margin: 20
     }
 
     render() {
