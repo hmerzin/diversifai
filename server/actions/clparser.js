@@ -2,20 +2,51 @@
 // var cl_json = require('./sample_output.json');
 
 // ethnicity counter
-var ethnicity_counter = {'white': 0, 'black or african american' : 0, 'american indian or alaska native' : 0,
-            'native hawaiian or pacific islander' : 0, 'middle eastern or north african' : 0,
-            'asian' : 0, 'hispanic, latino, or spanish origin' : 0, 'other' : 0};
+var ethnicity_counter = {
+  'white': 0,
+  'black or african american': 0,
+  'american indian or alaska native': 0,
+  'native hawaiian or pacific islander': 0,
+  'middle eastern or north african': 0,
+  'asian': 0,
+  'hispanic, latino, or spanish origin': 0,
+  'other': 0
+};
 
 // gender counter
-var gender_counter = {'feminine' : 0, 'masculine' : 0};
+var gender_counter = {
+  'feminine': 0,
+  'masculine': 0
+};
 
 // age counter
-var age_counter = {'0-4' : 0, '5-9' : 0, '10-14' : 0, '15-19' : 0, '20-24' : 0, '25-29' : 0, '30-34' : 0,
-               '35-39' : 0, '40-44' : 0, '45-49' : 0, '50-54' : 0, '55-59' : 0, '60-64' : 0,
-               '65-69' : 0, '70-74' : 0, '75-79' : 0, '80+' : 0};
+var age_counter = {
+  '0-4': 0,
+  '5-9': 0,
+  '10-14': 0,
+  '15-19': 0,
+  '20-24': 0,
+  '25-29': 0,
+  '30-34': 0,
+  '35-39': 0,
+  '40-44': 0,
+  '45-49': 0,
+  '50-54': 0,
+  '55-59': 0,
+  '60-64': 0,
+  '65-69': 0,
+  '70-74': 0,
+  '75-79': 0,
+  '80+': 0
+};
 
 function clparse(cl_json) {
-  var regions = cl_json.outputs[0].data.regions;
+
+  var regions = [];
+  if (cl_json.outputs.length) {
+    regions = cl_json.outputs[0].data.regions;
+  }
+
   for (i = 0; i < regions.length; i++) {
     var face = regions[i].data.face;
 
@@ -48,9 +79,9 @@ function clparse(cl_json) {
 function get_age_range(age) {
   if (age >= 0 && age <= 4) {
     return '0-4';
-  } else if (age >= 5 && age <= 9){
+  } else if (age >= 5 && age <= 9) {
     return '5-9';
-  } else if (age >= 10 && age <= 14){
+  } else if (age >= 10 && age <= 14) {
     return '10-14';
   } else if (age >= 15 && age <= 19) {
     return '15-19';
@@ -70,7 +101,7 @@ function get_age_range(age) {
     return '50-54';
   } else if (age >= 55 && age <= 59) {
     return '55-59';
-  } else if  (age >= 60 && age <= 64) {
+  } else if (age >= 60 && age <= 64) {
     return '60-64';
   } else if (age >= 65 && age <= 69) {
     return '65-69';
@@ -82,3 +113,5 @@ function get_age_range(age) {
     return '80+';
   }
 }
+
+module.exports = clparse
