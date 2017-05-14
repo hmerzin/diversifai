@@ -17,6 +17,8 @@ import Results from './components/Results';
 import io from 'socket.io-client';
 import startData from '../data/start';
 
+import '../styles/index.css';
+
 let socket;
 
 socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
@@ -66,16 +68,20 @@ class Entry extends Component {
       display: 'flex',
       height: '100vh',
       weight: '100vw',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      backgroundColor: 'white',
+      color: '#4aa397'
     },
     headerWrapper: {
       alignItems: 'center',
       justifyContent: 'center',
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
     },
     bodyWrapper: {
       display: 'flex',
-      flexDirection: 'column',
-      flex: 1
+      flexDirection: 'column'
     }
   }
 
@@ -85,7 +91,7 @@ class Entry extends Component {
         <div style={this.styles.headerWrapper}>
           <div style={{'padding': 20, textAlign: 'center'}}>
             <h2>Data-Driven Diversity</h2>
-            <h4>Analyze the Gender & Race Representation of any brand.</h4>
+          <h4>Analyze the Intersectionality Rating of any brand.</h4>
           </div>
           <Search onSubmit={this.startCalculation}/>
         </div>

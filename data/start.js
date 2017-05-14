@@ -5,7 +5,7 @@ module.exports = {
    "black or african american": 0,
    "native hawaiian or pacific islander": 0,
    "middle eastern or north african": 0,
-   "white": 0,
+   "white": 2,
    "other": 0,
    "american indian or alaska native": 0,
    "asian": 1
