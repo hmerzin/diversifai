@@ -50,11 +50,11 @@ class Entry extends Component {
   }
 
   componentDidMount() {
-    socket.on('display_results', this.displayResults);
+    socket.on('recieve_results', this.handleResponse);
   }
 
-  displayResults(data) {
-    console.log(data);
+  handleResponse(data) {
+    console.log('data:' + data);
   }
 
   startCalculation(url) {
