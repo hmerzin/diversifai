@@ -135,7 +135,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Ethnic Diversity</h4>
-          <Bar ratingColor='green' rating={0.80} />
+          <Bar rating={0.80} />
           {emojiData.map(getEmoji.bind(this))}
         </div>
       )
@@ -168,7 +168,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Age Diversity</h4>
-          <Bar ratingColor='red' rating={0.30} />
+          <Bar rating={0.30} />
         {ageData.map(getEmoji.bind(this))}
         </div>
       )
@@ -201,7 +201,7 @@ export default class Results extends Component {
       return (
         <div style={{textAlign: 'center', padding: '1rem'}}>
           <h4>Gender Diversity</h4>
-          <Bar style={{display: 'inline-block'}} ratingColor='yellow' rating={0.44} />
+          <Bar style={{display: 'inline-block'}} rating={0.44} />
           {genderData.map(getEmoji.bind(this))}
         </div>
       )
