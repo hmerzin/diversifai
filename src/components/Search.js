@@ -54,12 +54,16 @@ export default class Search extends Component {
       }
     }
 
+    calcWidth() {
+      return document.body.clientWidth * 0.66
+    }
+
     render() {
         return (
-          <div style={this.style.inputWrapper} className="InputWrapper">
+          <div>
             <form style={this.style.form} onSubmit={this.handleSubmit}>
-              <TextField floatingLabelText="Floating Label Text" onChange={this.updateValue} errorText={this.state.error ? "You need to enter a valid URL" : null} />
-              <FlatButton style={{marginTop: 30, marginLeft: 15}} label="Submit" type="submit" primary={true} />
+              <TextField style={{width: this.calcWidth(), margin: 50}} floatingLabelText="URL" onChange={this.updateValue} errorText={this.state.error ? "You need to enter a valid URL" : null} />
+              <FlatButton style={{marginTop: 75, marginLeft: 15}} label="Submit" type="submit" primary={true} />
             </form>
           </div>
         )

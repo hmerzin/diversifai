@@ -16,6 +16,7 @@ import Search from './components/Search';
 import Results from './components/Results';
 import io from 'socket.io-client';
 import startData from '../data/start';
+import Bar from './components/Bar.js';
 
 let socket;
 
