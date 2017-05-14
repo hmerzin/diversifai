@@ -141,15 +141,14 @@ class Entry extends Component {
   }
 
   render() {
-<<<<<<< HEAD
+ 
 
     //alert('state data: ' + JSON.stringify(this.state.data));
 
     // alert('state data: ' + JSON.stringify(this.state.data));
 
-=======
-    alert('state data: ' + JSON.stringify(this.state.data));
->>>>>>> 4dd36d9ce73858ec666a1e87eee9d0adb1f2f0fc
+
+    //alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
         <div style={this.styles.headerWrapper}>
@@ -165,7 +164,7 @@ class Entry extends Component {
 
           { this.state.data && this.state.data.data ? <Results data={this.state} /> : null }
 
-          { this.state.data.deter ? <Results data={this.state} /> : <FavoriteSites/> }
+          
 
         </div>
       </div>
