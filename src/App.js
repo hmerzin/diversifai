@@ -13,6 +13,7 @@ import {
 injectTapEventPlugin();
 import FavoriteSites from './components/FavoriteSites';
 import Search from './components/Search';
+import Results from './components/Results';
 import io from 'socket.io-client';
 import startData from '../data/start';
 
@@ -60,11 +61,23 @@ class Entry extends Component {
     socket.emit('calculate', url);
   }
 
+  styles = {
+    appWrapper: {
+      display: 'flex',
+      height: '100vh',
+      flexDirection: 'column'
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div style={this.styles.appWrapper}>
+        <div style={{'padding': 20}}>
+          <h2>Data-Driven Diversity</h2>
+          <h4>Analyze the Gender & Race Representation of any brand.</h4>
+        </div>
         <Search onSubmit={this.startCalculation}/>
-        <FavoriteSites/>
+        { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
       </div>
     )
   }
