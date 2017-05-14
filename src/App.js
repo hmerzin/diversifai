@@ -7,7 +7,6 @@ import {
   // CALCULATE,
   CONNECTION
 } from './events';
-import startData from '../data/start';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -16,6 +15,7 @@ import FavoriteSites from './components/FavoriteSites';
 import Search from './components/Search';
 import Results from './components/Results';
 import io from 'socket.io-client';
+import startData from '../data/start';
 
 let socket;
 
@@ -50,11 +50,11 @@ class Entry extends Component {
   }
 
   componentDidMount() {
-    socket.on('display_results', this.displayResults);
+    socket.on('recieve_results', this.handleResponse);
   }
 
-  displayResults(data) {
-    console.log(data);
+  handleResponse(data) {
+    console.log('data:' + data);
   }
 
   startCalculation(url) {

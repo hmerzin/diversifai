@@ -6,6 +6,7 @@ var calculateDiversity = require('./actions/calculateDiversity').bind(this);
 io.on('connection', (socket) => {
   // when the client emits 'handshake', this listens and executes
   socket.on('calculate', (data) => {
-    calculateDiversity(data);
+    const diversityNum = calculateDiversity(data);
+    socket.emit('recieve_results', diversityNum);
   });
 });
