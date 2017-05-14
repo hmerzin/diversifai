@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
 
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
 
@@ -32,7 +30,7 @@ export default class Results extends Component {
         display: 'flex',
         justifyContent: 'center',
       },
-      inputWrapper: {
+      resultsWrapper: {
         display: 'flex',
         justifyContent: 'center',
       }
@@ -50,13 +48,22 @@ export default class Results extends Component {
       }
     }
 
+    styles = {
+
+    }
+
     render() {
         return (
-          <div style={this.style.inputWrapper} className="InputWrapper">
-              <form style={this.style.form} onSubmit={this.handleSubmit}>
-                <TextField floatingLabelText="Floating Label Text" onChange={this.updateValue} />
-                <FlatButton style={{marginTop: 30, marginLeft: 15}} label="Submit" type="submit" primary={true} />
-              </form>
+          <div style={this.style.resultsWrapper}>
+            <div style={this.styles.ethnicityWrapper}>
+
+            </div>
+            <div style={this.styles.ageWrapper}>
+
+            </div>
+            <div style={this.styles.genderWrapper}>
+
+            </div>
           </div>
         )
     }

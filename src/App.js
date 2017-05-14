@@ -65,7 +65,13 @@ class Entry extends Component {
     appWrapper: {
       display: 'flex',
       height: '100vh',
+      weight: '100vw',
       flexDirection: 'column'
+    },
+    bodyWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1
     }
   }
 
@@ -77,7 +83,9 @@ class Entry extends Component {
           <h4>Analyze the Gender & Race Representation of any brand.</h4>
         </div>
         <Search onSubmit={this.startCalculation}/>
-        { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
+      <div style={this.styles.bodyWrapper}>
+          { this.state.data ? <Results data={this.state.data} /> : <FavoriteSites/> }
+        </div>
       </div>
     )
   }
