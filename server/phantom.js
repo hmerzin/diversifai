@@ -1,13 +1,13 @@
 const Horseman = require('node-horseman');
 var horseman = new Horseman();
-const URL = 'http://www.bestbuy.com/'
+const URL = 'https://www.sequoiacap.com/people/'
 
-module.exports = () => {
+module.exports = (url) => {
     horseman
-        .open(URL)
+        .open(url)
         .html()
         .then((text) => {
-            getImageURLs(text)
+            return getImageURLs(text)
         })
 }
 

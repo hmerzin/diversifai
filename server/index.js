@@ -3,6 +3,7 @@ var io = require('socket.io')(port);
 const phantomjs = require('./phantom');
 const http = require('http');
 const fs = require('fs');
+console.log('PJS: ' + phantomjs('https://www.sequoiacap.com/people/'));
 
 var calculateDiversity = require('./actions/calculateDiversity').bind(this);
 
