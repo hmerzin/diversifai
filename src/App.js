@@ -7,7 +7,7 @@ import {
   // CALCULATE,
   CONNECTION
 } from './events';
-import startData from './data/start';
+import startData from '../data/start';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
