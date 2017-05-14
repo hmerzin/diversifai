@@ -5,11 +5,24 @@ const PubNub = require('pubnub');
 var clparse = require('./actions/clparser');
 const http = require('http');
 const fs = require('fs');
+
 const pn = require('./actions/pub_nub.js');
+
+console.log('PJS: ' + phantomjs('https://www.sequoiacap.com/people/'));
+
+  var Clarifai = require('clarifai');
+  
+  // initialize with your clientId and clientSecret
+  
+  var clar = new Clarifai.App(
+    '29KUybgXAWY3gv6_kk-jrVwn82AQQ3XIhrJZ0BhE',
+    'OSq7wUjo26Ija24_eGr8TL7cPyA965lrTOlQqswL'
+  );
+
 
 var calculateDiversity = require('./actions/pub_nub.js').bind(this);
 
-const CLARIFAI_CHANNEL = 'clarifai-channel'
+const CLARIFAI_CHANNEL = 'clarifai-channel';
 
 
   // when the client emits 'handshake', this listens and executes
@@ -114,21 +127,31 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
     withPresence: true
   });
 
+  function get(url, socket) {
+
+  clar.models.predict(Clarifai.GENERAL_MODEL, url).then(
+    function(response) {
+      console.log(response);
+      // do something with response
+      socket.emit('recieve_results', response);
+    },
+    function(err) {
+      // there was an error
+    }
+  );
+  }
+
+
 io.on('connection', (socket) => {
   socket.on('calculate', (url) => {
     const images = new Promise((resolve, reject) => {
       phantomjs(url).then(images => {
+        console.log(images);
         images.forEach(image => {
-          pn(image, pubnub, (data) => {console.log(data);});//{socket.emit('recieve_results', data.filter((val, index) => {if(index < 5) return true}));});
+          get(image);
         });
-        console.log(images.length);
       });
-  });
-
-
-
-
-    
+    });
   });
 });
 

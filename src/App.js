@@ -58,6 +58,9 @@ class Entry extends Component {
   }
 
   startCalculation(url) {
+    this.setState({
+      data: {}
+    })
     socket.emit('calculate', url);
   }
 
@@ -84,6 +87,7 @@ class Entry extends Component {
   }
 
   render() {
+    //alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
         <div style={this.styles.headerWrapper}>

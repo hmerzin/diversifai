@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import constants from '../../constants/demographic.js';
 import Bar from './Bar';
 var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-
+var rd3 = require('react-d3');
+var PieChart = rd3.PieChart;
 
 var agemap = {
   "0-4": "baby",
@@ -47,9 +48,8 @@ export default class Results extends Component {
     constructor(props) {
       super();
 
-      this.state = {
-        url: false
-      }
+      this.state = props;
+      console.log('state: ' + JSON.stringify(props));
 
       this.handleSubmit = this.handleSubmit.bind(this);
       this.updateValue = this.updateValue.bind(this);
@@ -208,6 +208,33 @@ export default class Results extends Component {
       )
     }
 
+    renderGraph() {
+      console.log('graph state: ' + this.state);
+     
+      var pieData = [];
+
+      Object.keys(this.state.data.age).forEach((elem) => {
+        // [elem] is the value 
+        // label is the key
+        if (this.state.data.age[elem] !== 0){
+          pieData.push(
+            {label: elem, value: this.state.data.age[elem]}
+          )
+          console.log('pieData: ' + pieData);
+        }
+      })
+
+      return (
+        <PieChart
+          data={pieData}
+          width={400}
+          height={400}
+          radius={100}
+          innerRadius={20}
+          title="Diversity, yo."/>
+      )
+    }
+
     render() {
         return (
           <div style={this.styles.resultsWrapper}>
@@ -216,13 +243,14 @@ export default class Results extends Component {
               {this.renderEthnicity()}
             </div>
             <div style={Object.assign({}, this.styles.rowWrapper, this.styles.ageWrapper)}>
-              
               {this.renderAge()}
             </div>
             <div style={Object.assign({}, this.styles.rowWrapper, this.styles.genderWrapper)}>
               {this.renderGender()}
-              
             </div>
+
+              {this.renderGraph()}
+
           </div>
         )
     }
