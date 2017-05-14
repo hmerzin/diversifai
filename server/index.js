@@ -7,11 +7,34 @@ const fs = require('fs');
 var calculateDiversity = require('./actions/calculateDiversity').bind(this);
 
 io.on('connection', (socket) => {
-  socket.on('calculate', (data) => {
-    const diversityNum = calculateDiversity(data);
-    socket.emit('recieve_results', diversityNum);
+  socket.on('calculate', (url) => {
+    const images = new Promise((resolve, reject) => {
+      phantomjs(url).then(images => {
+        console.log(images);
+      });
   });
-})
+
+
+
+
+    //socket.emit('recieve_results', diversityNum);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const app = http.createServer((req, res) => {
   //console.log(req.url);
