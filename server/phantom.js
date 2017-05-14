@@ -2,13 +2,15 @@ const Horseman = require('node-horseman');
 var horseman = new Horseman();
 const URL = 'http://www.bestbuy.com/'
 
-module.exports = () => {
+module.exports = (url) => {
+    return new Promise((resolve, reject) => {
     horseman
-        .open(URL)
+        .open(url)
         .html()
         .then((text) => {
-            getImageURLs(text)
-        })
+            resolve(getImageURLs(text));
+        });
+    });
 }
 
 function getImageURLs(text) {
@@ -33,6 +35,7 @@ function getImageURLs(text) {
         if (elem.length > 0) return true;
         return false;
     });
+    
     // console.log(sources);
     return sources;
 }

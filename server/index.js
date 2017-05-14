@@ -8,6 +8,7 @@ const fs = require('fs');
 
 var calculateDiversity = require('./actions/pub_nub.js').bind(this);
 
+<<<<<<< HEAD
 const CLARIFAI_CHANNEL = 'clarifai-channel'
 
 
@@ -127,8 +128,37 @@ const CLARIFAI_CHANNEL = 'clarifai-channel'
         calculateDiversity(data, pubnub);
       }
     });
+=======
+io.on('connection', (socket) => {
+  socket.on('calculate', (url) => {
+    const images = new Promise((resolve, reject) => {
+      phantomjs(url).then(images => {
+        console.log(images);
+      });
+>>>>>>> 79a9b615e13a2b550d6892b67e9e060db8be724f
   });
-})
+
+
+
+
+    //socket.emit('recieve_results', diversityNum);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const app = http.createServer((req, res) => {
   //console.log(req.url);
