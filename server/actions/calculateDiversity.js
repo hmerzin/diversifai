@@ -29,11 +29,7 @@ module.exports = function (data) {
         var pubTT = m.timetoken; // Publish timetoken
         var msg = m.message; // The Payload
 
-        if(channelName === CLARIFAI_CHANNEL) {
-          console.log('woo!');
-        }
-
-        console.log('pubhub', msg);
+        console.log(m.message.outputs);
     },
     presence: function(p) {
         // handle presence
@@ -64,4 +60,9 @@ module.exports = function (data) {
         console.log(status, response);
     }
   );
+
+  pubnub.subscribe({
+    channels: [CLARIFAI_CHANNEL],
+    withPresence: true
+  });
 }
