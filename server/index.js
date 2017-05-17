@@ -5,7 +5,7 @@ const PubNub = require('pubnub');
 var clparse = require('./actions/clparser');
 const http = require('http');
 const fs = require('fs');
-
+const app = require('express')();
 const pn = require('./actions/pub_nub.js');
 
 console.log('PJS: ' + phantomjs('https://www.sequoiacap.com/people/'));
@@ -142,6 +142,7 @@ const CLARIFAI_CHANNEL = 'clarifai-channel';
   );
   }
 
+app.use(express.static('../build'));
 
 io.on('connection', (socket) => {
   socket.on('calculate', (url) => {
@@ -172,7 +173,7 @@ io.on('connection', (socket) => {
 
 
 
-
+/*
 const app = http.createServer((req, res) => {
   //console.log(req.url);
   const extension = req.url.split('.')[req.url.split('.').length - 1];
@@ -207,3 +208,4 @@ const app = http.createServer((req, res) => {
 });
 
 app.listen(3002);
+*/

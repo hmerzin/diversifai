@@ -70,7 +70,7 @@ import '../styles/index.css';
 
 let socket;
 
-socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
+socket = io('https://whispering-dawn-74203.herokuapp.com/api', {reconnect: true}); // run nodemon server/index.js
 
 socket.on('handshake', (data) => {
   //console.log('server handshake: ', data);
