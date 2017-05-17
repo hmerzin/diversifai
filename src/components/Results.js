@@ -74,6 +74,7 @@ export default class Results extends Component {
       resultsWrapper: {
         display: 'flex',
         justifyContent: 'center',
+        flexWrap: 'wrap'
       }
     }
 

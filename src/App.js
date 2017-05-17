@@ -149,7 +149,7 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          {this.state.data && this.state.data.data ? <Results data={{data: this.state.data}} /> : null} 
+          {this.state.data && this.state.data.data ? <Results data={this.state} /> : null} 
         </div>
       </div>
     )
