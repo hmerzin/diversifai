@@ -99,7 +99,7 @@ class Entry extends Component {
     socket.on('res', (data) => {
       console.log('recieved');
       this.setState({
-        data: data,
+        data: startData,
         results: true
       })
       console.log('state:' + this.state);
@@ -149,10 +149,11 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          <Results data={startData} />
+          {this.state.data && this.state.data.data ? <Results data={{data: this.state.data}} /> : null} 
         </div>
       </div>
     )
+    //<Results data={{data: startData}} />
   }
 }
 
