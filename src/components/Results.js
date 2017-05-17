@@ -70,11 +70,12 @@ export default class Results extends Component {
       form: {
         display: 'flex',
         justifyContent: 'center',
+        flexWrap: 'wrap',
       },
       resultsWrapper: {
         display: 'flex',
         justifyContent: 'center',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
       }
     }
 
@@ -94,7 +95,8 @@ export default class Results extends Component {
       resultsWrapper: {
         display: 'flex',
         justifyContent: 'center',
-        flex: 1
+        flex: 1,
+        flexWrap: 'wrap'
       },
       rowWrapper: {
         display: 'block',
@@ -106,6 +108,10 @@ export default class Results extends Component {
         display: 'inline-block',
         fontSize: '2rem'
       }
+    }
+
+    componentWillMount() {
+      console.log(`DATA: ${JSON.stringify(this.props.data)}`);
     }
 
     renderEthnicity () {
@@ -252,7 +258,7 @@ export default class Results extends Component {
               {this.renderGender()}
             </div>
 
-              {this.renderGraph()}
+              {/*this.renderGraph()*/}
 
           </div>
         )

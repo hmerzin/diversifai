@@ -73,7 +73,7 @@ let socket;
 socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
 
 socket.on('handshake', (data) => {
-  console.log('server handshake: ', data);
+  //console.log('server handshake: ', data);
 });
 
 class App extends Component {
@@ -102,7 +102,7 @@ class Entry extends Component {
         data: startData,
         results: true
       })
-      console.log('state:' + this.state);
+      //console.log('state:' + this.state);
     });
   }
 
