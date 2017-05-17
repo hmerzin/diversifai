@@ -1,9 +1,11 @@
 const Horseman = require('node-horseman');
 var horseman = new Horseman();
-const URL = 'http://www.bestbuy.com/'
+const URL = 'https://www.sequoiacap.com/people/'
 
 module.exports = (url) => {
+
     return new Promise((resolve, reject) => {
+
     horseman
         .open(url)
         .html()
@@ -11,7 +13,6 @@ module.exports = (url) => {
             resolve(getImageURLs(text));
         });
     });
-}
 
 function getImageURLs(text) {
     var matches = text.match(/<img([^>]+)src="[/]?([^"]+)"([^>]*)>|<( *)img( *)[/>|>]/g);
@@ -30,10 +31,12 @@ function getImageURLs(text) {
         sources.push(buildStr);
         buildStr = ''; // empty out
     })
+
     sources = sources.filter((elem) => {
         if (elem.length > 0) return true;
         return false;
     });
-    //console.log(sources);
+    
     return sources;
+}
 }

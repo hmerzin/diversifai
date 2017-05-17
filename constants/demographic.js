@@ -24,42 +24,42 @@ module.exports = {
     {
       title: ETHNICITIES.HISPANIC,
       tone: ["🏼", "🏽", "🏾"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.BLACK,
       tone: ["🏿", "🏿", "🏿", "🏾"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.NHPI,
       tone: ["🏽"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.MENA,
       tone: ["🏿", "🏾", "🏾", "🏾"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.WHITE,
       tone: ["🏻"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.OTHER,
       tone: [""],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.AIAN,
       tone: ["🏾"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
     {
       title: ETHNICITIES.ASIAN,
       tone: ["🏻","🏼","🏽"],
-      emojis: ["🤚","🤙","✍️","👐","👏","🤘","✌️"]
+      emojis: ["👐","👏","🤘"]
     },
   ],
   ages: [

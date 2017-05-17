@@ -8,6 +8,55 @@ import {
   CONNECTION
 } from './events';
 
+
+
+
+
+
+
+// json for testing
+// var cl_json = require('./sample_output.json');
+
+// ethnicity counter
+var ethnicity_counter = {
+  'white': 0,
+  'black or african american': 0,
+  'american indian or alaska native': 0,
+  'native hawaiian or pacific islander': 0,
+  'middle eastern or north african': 0,
+  'asian': 0,
+  'hispanic, latino, or spanish origin': 0,
+  'other': 0
+};
+
+// gender counter
+var gender_counter = {
+  'feminine': 0,
+  'masculine': 0
+};
+
+// age counter
+var age_counter = {
+  '0-4': 0,
+  '5-9': 0,
+  '10-14': 0,
+  '15-19': 0,
+  '20-24': 0,
+  '25-29': 0,
+  '30-34': 0,
+  '35-39': 0,
+  '40-44': 0,
+  '45-49': 0,
+  '50-54': 0,
+  '55-59': 0,
+  '60-64': 0,
+  '65-69': 0,
+  '70-74': 0,
+  '75-79': 0,
+  '80+': 0
+};
+
+
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
@@ -21,15 +70,10 @@ import '../styles/index.css';
 
 let socket;
 
-socket = io('localhost:3001', {reconnect: true}); // run nodemon server/index.js
-socket.emit(CONNECTION);
-socket.emit(HANDSHAKE, {
-  hi: 'dude',
-  whats: 'up?'
-});
+socket = io('https://whispering-dawn-74203.herokuapp.com/api', {reconnect: true}); // run nodemon server/index.js
 
 socket.on('handshake', (data) => {
-  console.log('server handshake: ', data);
+  //console.log('server handshake: ', data);
 });
 
 class App extends Component {
@@ -46,20 +90,26 @@ class Entry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = startData;
-
+    this.state = {results: false};
     this.startCalculation = this.startCalculation.bind(this);
   }
 
   componentDidMount() {
-    socket.on('recieve_results', this.handleResponse);
-  }
-
-  handleResponse(data) {
-    console.log('data:' + data);
+    //console.log(this.state);
+    socket.on('res', (data) => {
+      console.log('recieved');
+      this.setState({
+        data: startData,
+        results: true
+      })
+      //console.log('state:' + this.state);
+    });
   }
 
   startCalculation(url) {
+    this.setState({
+      data: {}
+    })
     socket.emit('calculate', url);
   }
 
@@ -86,6 +136,7 @@ class Entry extends Component {
   }
 
   render() {
+    //alert('state data: ' + JSON.stringify(this.state.data));
     return (
       <div style={this.styles.appWrapper}>
         <div style={this.styles.headerWrapper}>
@@ -98,10 +149,11 @@ class Entry extends Component {
           <Search onSubmit={this.startCalculation}/>
         </div>
         <div style={this.styles.bodyWrapper}>
-          { this.state.data ? <Results data={this.state} /> : <FavoriteSites/> }
+          {this.state.data && this.state.data.data ? <Results data={this.state} /> : null} 
         </div>
       </div>
     )
+    //<Results data={{data: startData}} />
   }
 }
 

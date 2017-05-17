@@ -48,6 +48,7 @@ module.exports = function (data) {
     }
   });
 
+  // var images = phantomjs('https://www.bestbuy.com');
   pubnub.publish(
     {
       message: {

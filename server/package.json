@@ -13,6 +13,10 @@
     "node-document": "0.1.0-pre9",
     "node-horseman": "^3.3.0",
     "phantom": "^4.0.3",
+    "react-d3": "^0.4.0",
     "socket.io": "^2.0.1"
+  },
+  "devDependencies": {
+    "clarify": "^2.0.0"
   }
 }
