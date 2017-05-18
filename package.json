@@ -1,26 +1,26 @@
 {
-  "name": "techcrunch-2017",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "react-scripts": "0.9.5"
-  },
-  "dependencies": {
-    "material-ui": "^0.18.1",
-    "node-phantom": "^0.2.5",
-    "pubnub": "^4.8.0",
-    "react": "^15.5.4",
-    "react-d3": "^0.4.0",
-    "react-dom": "^15.5.4",
-    "react-materialize": "^0.18.4",
-    "react-scripts": "^0.9.5",
-    "react-tap-event-plugin": "^2.0.1",
-    "socket.io-client": "^2.0.1"
-  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node ./server/index",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clarifai": "^2.1.6",
+    "express": "^4.15.3",
+    "node-document": "0.1.0-pre9",
+    "node-horseman": "^3.3.0",
+    "phantom": "^4.0.3",
+    "pubnub": "^4.8.0",
+    "react-d3": "^0.4.0",
+    "socket.io": "^2.0.1"
+  },
+  "devDependencies": {
+    "clarify": "^2.0.0"
   }
 }

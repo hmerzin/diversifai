@@ -1,0 +1,4 @@
+--ui exports
+--globals memory
+--reporter spec
+--bail

@@ -5,7 +5,8 @@ const PubNub = require('pubnub');
 var clparse = require('./actions/clparser');
 const http = require('http');
 const fs = require('fs');
-const app = require('express')();
+const express = require('express');
+const app = express();
 const pn = require('./actions/pub_nub.js');
 
 console.log('PJS: ' + phantomjs('https://www.sequoiacap.com/people/'));
@@ -142,7 +143,8 @@ const CLARIFAI_CHANNEL = 'clarifai-channel';
   );
   }
 
-app.use(express.static('../build'));
+app.use(express.static('../fe/build'));
+app.listen(8080, () => {console.log('listening..... 👂')});
 
 io.on('connection', (socket) => {
   socket.on('calculate', (url) => {
